@@ -15,7 +15,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonObject;
 
 public class CurrencyConverter {
-    public static void main(String[] args) {
+    JsonObject connectAPI() {
         try {
             // Setting URL
             String url_str = "https://v6.exchangerate-api.com/v6/7427f98d814bd63f1f113486/latest/USD";
@@ -31,13 +31,15 @@ public class CurrencyConverter {
             JsonObject jsonobj = root.getAsJsonObject();
 
             // Testing
-            CurrencyConverter cc = new CurrencyConverter();
-            System.out.println(cc.convert(100, "INR", jsonobj));
+//            CurrencyConverter cc = new CurrencyConverter();
+//            System.out.println(cc.convert(100, "INR", jsonobj));
 
             // Accessing object
             String req_result = jsonobj.get("result").getAsString();
+            return jsonobj;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
